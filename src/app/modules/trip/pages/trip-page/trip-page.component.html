@@ -1,0 +1,47 @@
+<p>
+  TRIP PAGE
+</p>
+<button mat-button [routerLink]="['']">Back home</button>
+
+<div *ngFor="let trip of trips" >
+    <mat-card>
+      <mat-card-title>{{trip.title}}</mat-card-title>
+      <mat-card-content>
+        <button class="delete-trip-button" (click)="deleteTrip(trip.document_id, trip.document_rev)">Delete trip</button>
+        <div>
+          <span>Created at: </span>
+          <span>{{trip.date_created}}</span>
+        </div>
+        <div>
+          <span>Starts at: </span>
+          <span>{{trip.date_start}}</span>
+        </div>
+        <div>
+          <span>Ends at: </span>
+          <span>{{trip.date_end}}</span>
+        </div>
+        <div>
+          <span>Price: </span>
+          <span>{{trip.price}}</span>
+        </div>
+        <div>
+          <span>Article: </span>
+          <span>{{trip.article.title}}</span>
+        </div>
+        <div>
+            <span>Locations: </span>
+            <div *ngFor="let location of trip.locations">
+              <span>Location: </span>
+              <span>{{location.title}}</span>
+            </div>
+        </div>
+        <div class="trip-images-container">
+            <span>Images: </span>
+            <div *ngFor="let image of trip.images">
+                <img class="trip-image" mat-card-image src="{{image.image_url}}">
+            </div>
+        </div>
+       
+      </mat-card-content>
+    </mat-card>
+</div>
